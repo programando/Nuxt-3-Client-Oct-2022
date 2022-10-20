@@ -5,15 +5,19 @@
     </div>
   </template>
 
-  <script>
+  <script setup>
   // ESTE ES UN EJEMPLO USANDO OPTION API
-  export default {
+  import Clientes from  "@/api/Terceros"
+   
     
-    mounted() {
-        const ENV = useRuntimeConfig()
-        console.log (ENV.public.apiBase)
-    }
-  }
+    onMounted(async  () => {
+      //const response= await Clientes.exampleRoute('foflf');
+      //console.log ( response )
+        //const AppConfig = useRuntimeConfig()
+        //console.log (AppConfig.urlServerApi)
+        
+     
+  })
   </script>
 
 
