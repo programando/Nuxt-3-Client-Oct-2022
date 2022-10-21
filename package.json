@@ -15,6 +15,9 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
-    "find-workspace-root": "^1.0.1"
+    "@pinia/nuxt": "^0.4.3",
+    "defu": "^6.1.0",
+    "find-workspace-root": "^1.0.1",
+    "pinia": "^2.0.23"
   }
 }
