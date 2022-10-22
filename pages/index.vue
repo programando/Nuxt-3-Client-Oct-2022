@@ -1,37 +1,60 @@
 <template>
+  <div>
     <div class="container mx-auto bg-gray-600 p-8 font-Poppins">
       <h1 class=" text-yellow-100 text-lg">
         ESTE ES UN EJEMPLO USANDO OPTION API, PERO USAREMOS COMPOSITION API EN TODO EL PROYECTO
-      <br>Count : {{ store.count}} 
+      <br>Count <br> 
+      <button @click="increment()"> + </button>  {{ store.count}} 
+      <button @click="decrement"> - </button>
+      <p> {{ store.countDigitalLength }} </p>
       </h1>
       
       <button class="text-white" @click="StateCahnge()"> Cambiar estado</button>
     </div>
-   
+    <div>
+      <h3> MANAGMENT USER INFORMATION</h3>
+        <div v-if="AuthStore.isAuthenticate">
+          <p> Usuario auntenticado :   {{ AuthStore.user.name }} </p>
+          <button @click="Logout"> Logout </button>
+        </div>
+        <div v-else>  
+          <br>
+          No ha inciado sesión
+          <br>
+          <button class="border px-6 py-2.5 bg-blue-600 text-white"> Ingresar al sistema </button> &nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        
+        
+    </div>
+  </div>
   </template>
 
  <!-- -->
   <script setup >
   import { useCounterStore } from "@/stores/counter";
-
+  import { useAuthStore} from "@/stores/auth";
  
   const store =  useCounterStore ()  ;
- 
-
-  // ESTE ES UN EJEMPLO USANDO OPTION API
-  //import Clientes from  "@/api/Terceros"
-  
-  onMounted(async  () => {
-      //const response= await Clientes.exampleRoute('foflf');
-      //console.log ( response )
-        //const AppConfig = useRuntimeConfig()
-        //console.log (AppConfig.urlServerApi)
-  })
+  const AuthStore = useAuthStore();
+ //  const countDigitalLength = store.count.toString().length;
 
     const StateCahnge = () => {
         store.increment( 4);
+        console.log( store.count)
     }
 
+    function increment() {
+        store.count++;
+    }
+    function decrement() {
+      store.count--;
+    }
+
+    function Logout() {
+        AuthStore.$patch( (state) =>{
+          (state.isAuthenticate = false), ( state.user = {})
+        })
+    }
   </script>
 
 
