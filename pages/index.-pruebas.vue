@@ -52,7 +52,7 @@
     }
 
     function increment() {
-        store.count++;
+        store.increment(5);
     }
     function decrement() {
       store.count--;

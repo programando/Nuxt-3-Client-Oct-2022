@@ -9,6 +9,7 @@ export const useCounterStore = defineStore('counter', {
         count: useLocalStorage('count', 0), 
       }
    ),
+  
     actions: {
       increment ( val ) {
         this.count += val
