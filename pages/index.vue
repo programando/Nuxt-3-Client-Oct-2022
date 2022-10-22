@@ -10,6 +10,9 @@
       </h1>
       
       <button class="text-white" @click="StateCahnge()"> Cambiar estado</button>
+      <p><input  type="text" v-model="Nombre"></p>
+      <br>
+      <p class="text-white"> {{AuthStore.user }}</p>
     </div>
     <div>
       <h3> MANAGMENT USER INFORMATION</h3>
@@ -31,16 +34,21 @@
 
  <!-- -->
   <script setup >
+  import { ref } from 'vue'
   import { useCounterStore } from "@/stores/counter";
   import { useAuthStore} from "@/stores/auth";
  
   const store =  useCounterStore ()  ;
   const AuthStore = useAuthStore();
+  const Nombre = ref('')
  //  const countDigitalLength = store.count.toString().length;
 
     const StateCahnge = () => {
-        store.increment( 4);
-        console.log( store.count)
+        console.log (Nombre.value)
+      AuthStore.setUser( {
+            name: Nombre.value,
+            email: "james@pepe.com"
+        } )
     }
 
     function increment() {
