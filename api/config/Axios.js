@@ -5,7 +5,7 @@ const Api = axios.create ({
   withCredentials: true
 })
  
-
+//process.env.VUE_APP_API
 export default Api
 
 

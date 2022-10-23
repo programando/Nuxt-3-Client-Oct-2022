@@ -47,7 +47,8 @@
         console.log (Nombre.value)
       AuthStore.setUser( {
             name: Nombre.value,
-            email: "james@pepe.com"
+            email: "james@pepe.com",
+            tipoRegistro: 'Cliente'
         } )
     }
 
